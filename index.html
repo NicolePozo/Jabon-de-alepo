@@ -1,0 +1,777 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BDW Made — Jabón de Alepo · Origen Siria</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600;1,700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+/* ── TOKENS ── */
+:root{
+  --ink:#1A1208;
+  --ink2:#2E2010;
+  --olive:#3B3820;
+  --gold:#B89A4A;
+  --gold2:#D4B46A;
+  --sage:#7A8C6E;
+  --sage2:#A8B89A;
+  --cream:#F5F0E8;
+  --parch:#EDE5D4;
+  --sand:#D4C8A8;
+  --warm:#F9F5EE;
+  --rust:#8B4A2A;
+  --D:'Cormorant Garamond',Georgia,serif;
+  --B:'DM Sans',sans-serif;
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;font-size:16px}
+body{font-family:var(--B);background:var(--warm);color:var(--ink);overflow-x:hidden}
+img{display:block;max-width:100%}
+
+/* ── NAV ── */
+nav{position:sticky;top:0;z-index:100;background:rgba(249,245,238,.96);backdrop-filter:blur(12px);border-bottom:1px solid rgba(180,154,74,.15);height:60px;display:flex;align-items:center;justify-content:space-between;padding:0 clamp(20px,5vw,60px)}
+.nav-logo{font-family:var(--D);font-size:18px;font-weight:700;color:var(--ink);letter-spacing:.02em}.nav-logo span{color:var(--gold)}
+.nav-tag{font-size:10px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--sage);border-left:1px solid var(--sand);padding-left:14px}
+.nav-cta{font-family:var(--B);font-size:12px;font-weight:500;padding:9px 20px;border-radius:100px;background:var(--ink);color:var(--cream);border:none;cursor:pointer;transition:background .2s}
+.nav-cta:hover{background:var(--gold)}
+.nav-right{display:flex;align-items:center;gap:12px}
+
+/* ── HERO ── */
+.hero{display:grid;grid-template-columns:1fr 1fr;min-height:calc(100vh - 60px);background:var(--ink)}
+.hero-visual{position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center;background:var(--ink2)}
+.hero-visual-glow{position:absolute;inset:0;background:radial-gradient(ellipse at 40% 55%,rgba(120,130,90,.18) 0%,transparent 60%);pointer-events:none}
+
+/* Jabón SVG ilustrado */
+.soap-stage{position:relative;z-index:2;display:flex;align-items:center;justify-content:center;padding:60px}
+.soap-float{animation:soapFloat 7s ease-in-out infinite}
+@keyframes soapFloat{0%,100%{transform:translateY(0) rotate(-3deg)}50%{transform:translateY(-14px) rotate(-3deg)}}
+
+/* Partículas de aceite de laurel */
+.drops{position:absolute;inset:0;pointer-events:none;overflow:hidden}
+.drop{position:absolute;width:5px;height:5px;border-radius:50%;background:var(--sage2);opacity:0;animation:dropFall linear infinite}
+@keyframes dropFall{0%{opacity:0;transform:translateY(-20px)}10%{opacity:.5}90%{opacity:.3}100%{opacity:0;transform:translateY(120px)}}
+
+.hero-content{display:flex;flex-direction:column;justify-content:center;padding:60px clamp(32px,5vw,72px);position:relative;z-index:1}
+.hero-eyebrow{display:flex;align-items:center;gap:10px;margin-bottom:20px;opacity:0;animation:fadeUp .8s ease .1s forwards}
+.ey-line{width:24px;height:1px;background:var(--gold)}
+.ey-text{font-size:9px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:var(--gold2)}
+
+.hero-h1{font-family:var(--D);font-size:clamp(40px,4.5vw,68px);font-weight:300;line-height:.9;letter-spacing:-1px;color:var(--cream);margin-bottom:12px;opacity:0;animation:fadeUp .8s ease .25s forwards}
+.hero-h1 strong{font-weight:700;display:block}
+.hero-h1 em{font-style:italic;color:var(--gold2)}
+
+.hero-sub{font-family:var(--D);font-size:clamp(15px,1.6vw,20px);font-style:italic;font-weight:300;color:var(--sage2);margin-bottom:28px;opacity:0;animation:fadeUp .8s ease .4s forwards}
+
+.hero-desc{font-size:14px;font-weight:300;color:rgba(213,197,168,.75);line-height:1.8;max-width:380px;margin-bottom:40px;opacity:0;animation:fadeUp .8s ease .55s forwards}
+
+/* PRECIO HERO */
+.hero-price-row{display:flex;align-items:baseline;gap:14px;margin-bottom:32px;opacity:0;animation:fadeUp .8s ease .7s forwards}
+.price-main{font-family:var(--D);font-size:clamp(40px,4vw,56px);font-weight:700;color:var(--cream);line-height:1}
+.price-unit{font-size:13px;color:rgba(213,197,168,.5);letter-spacing:.06em}
+
+.hero-actions{display:flex;gap:10px;margin-bottom:44px;opacity:0;animation:fadeUp .8s ease .85s forwards}
+.btn-primary{padding:15px 32px;background:var(--gold);border:none;border-radius:100px;font-family:var(--B);font-size:13px;font-weight:500;color:var(--ink);cursor:pointer;transition:all .22s}
+.btn-primary:hover{background:var(--gold2);transform:translateY(-2px);box-shadow:0 8px 24px rgba(184,154,74,.25)}
+.btn-secondary{padding:14px 24px;background:transparent;border:1px solid rgba(213,197,168,.2);border-radius:100px;font-family:var(--B);font-size:13px;color:rgba(213,197,168,.7);cursor:pointer;transition:all .22s}
+.btn-secondary:hover{border-color:var(--gold);color:var(--gold)}
+
+/* MINI CERTIFS */
+.hero-certs{display:flex;gap:16px;opacity:0;animation:fadeUp .8s ease 1s forwards}
+.cert-pill{display:flex;align-items:center;gap:6px;padding:6px 12px;border-radius:100px;border:1px solid rgba(120,140,110,.3);background:rgba(120,140,110,.08);font-size:10px;font-weight:500;letter-spacing:.06em;color:var(--sage2)}
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+
+/* ── ORIGEN BANNER ── */
+.origin-banner{background:var(--olive);padding:clamp(48px,6vw,80px) clamp(20px,5vw,60px);position:relative;overflow:hidden}
+.origin-banner::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(45deg,transparent,transparent 40px,rgba(184,154,74,.03) 40px,rgba(184,154,74,.03) 41px);pointer-events:none}
+.ob-inner{max-width:1060px;margin:0 auto;display:grid;grid-template-columns:1fr 2fr;gap:60px;align-items:center}
+.ob-tag{font-size:9px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:var(--gold2);margin-bottom:14px;display:block}
+.ob-title{font-family:var(--D);font-size:clamp(32px,3.5vw,48px);font-weight:300;line-height:.95;color:var(--cream);margin-bottom:16px}
+.ob-title strong{font-weight:700}
+.ob-title em{font-style:italic;color:var(--gold2)}
+.ob-body{font-size:14px;color:rgba(213,197,168,.7);line-height:1.8}
+
+/* MAP ILUSTRADO */
+.origin-map{position:relative;width:100%;display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.om-card{background:rgba(255,255,255,.04);border:1px solid rgba(184,154,74,.15);border-radius:14px;padding:22px;transition:border-color .2s}
+.om-card:hover{border-color:rgba(184,154,74,.4)}
+.om-flag{font-size:28px;margin-bottom:12px}
+.om-country{font-family:var(--D);font-size:20px;font-weight:700;color:var(--cream);margin-bottom:4px}
+.om-city{font-size:11px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--gold2);margin-bottom:10px}
+.om-desc{font-size:12px;color:rgba(213,197,168,.6);line-height:1.6}
+.om-cert{display:inline-flex;align-items:center;gap:5px;margin-top:10px;padding:3px 10px;border-radius:100px;background:rgba(120,140,110,.15);font-size:10px;color:var(--sage2)}
+
+/* ── HIGHLIGHTS ── */
+.highlights{padding:clamp(60px,8vw,100px) clamp(20px,5vw,60px);background:var(--warm)}
+.hl-inner{max-width:1060px;margin:0 auto}
+.section-eyebrow{font-size:9px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);display:block;margin-bottom:12px}
+.section-h2{font-family:var(--D);font-size:clamp(32px,4vw,52px);font-weight:300;line-height:.95;letter-spacing:-.5px;color:var(--ink);margin-bottom:48px}
+.section-h2 strong{font-weight:700}
+.section-h2 em{font-style:italic;color:var(--rust)}
+
+.hl-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:16px}
+.hl-card{border-radius:16px;padding:28px;position:relative;overflow:hidden;transition:transform .22s}
+.hl-card:hover{transform:translateY(-3px)}
+.hl-card.dark{background:var(--ink);color:var(--cream)}
+.hl-card.olive{background:var(--olive);color:var(--cream)}
+.hl-card.light{background:var(--parch);color:var(--ink);border:1px solid rgba(180,154,74,.15)}
+.hl-card.gold{background:var(--gold);color:var(--ink)}
+.hl-card.sage{background:rgba(120,140,110,.12);border:1px solid rgba(120,140,110,.25);color:var(--ink)}
+
+.hl-num{font-family:var(--D);font-size:clamp(40px,4vw,56px);font-weight:700;line-height:1;margin-bottom:8px}
+.hl-num.gold-c{color:var(--gold2)}
+.hl-num.sage-c{color:var(--sage)}
+.hl-num.cream-c{color:var(--cream)}
+.hl-num.ink-c{color:var(--ink)}
+.hl-label{font-size:10px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;margin-bottom:10px;opacity:.6}
+.hl-body{font-size:13px;line-height:1.6;opacity:.75}
+
+/* wide card */
+.hl-card.wide{grid-column:span 2}
+.hl-card.tall{display:flex;flex-direction:column;justify-content:flex-end}
+
+/* Decoraciones internas */
+.hl-deco{position:absolute;top:-10px;right:-10px;font-family:var(--D);font-size:80px;opacity:.06;line-height:1;pointer-events:none}
+
+/* ── INGREDIENTES ── */
+.ingredients{padding:clamp(60px,8vw,100px) clamp(20px,5vw,60px);background:var(--parch)}
+.ing-inner{max-width:1060px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:start}
+.ing-list{display:flex;flex-direction:column;gap:0}
+.ing-item{display:flex;gap:20px;padding:22px 0;border-bottom:1px solid rgba(180,154,74,.12);cursor:pointer}
+.ing-item:last-child{border-bottom:none}
+.ing-item:hover .ing-pct{color:var(--gold)}
+.ing-pct{font-family:var(--D);font-size:32px;font-weight:700;color:var(--sand);width:72px;flex-shrink:0;line-height:1;transition:color .2s}
+.ing-info{}
+.ing-name{font-family:var(--D);font-size:20px;font-weight:700;color:var(--ink);margin-bottom:4px}
+.ing-name-ar{font-size:11px;color:var(--gold);letter-spacing:.06em;margin-bottom:6px;font-style:italic}
+.ing-desc{font-size:13px;color:var(--olive);line-height:1.6;opacity:.8}
+
+/* Visual ingredientes */
+.ing-visual{position:sticky;top:80px}
+.ing-circle{width:100%;aspect-ratio:1;border-radius:50%;background:var(--ink2);position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center}
+.ing-circle-inner{text-align:center;z-index:2;position:relative;padding:40px}
+.ic-pct{font-family:var(--D);font-size:80px;font-weight:700;color:var(--gold2);line-height:1}
+.ic-label{font-size:11px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--sage2);margin-top:8px}
+.ic-name{font-family:var(--D);font-size:22px;font-style:italic;color:var(--cream);margin-top:6px}
+/* SVG ring */
+.ring-svg{position:absolute;inset:0}
+
+/* ── USO ── */
+.uso{padding:clamp(60px,8vw,100px) clamp(20px,5vw,60px);background:var(--warm)}
+.uso-inner{max-width:1060px;margin:0 auto}
+.uso-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:48px}
+.uso-step{text-align:center;padding:32px 20px}
+.us-num{font-family:var(--D);font-size:48px;font-weight:300;color:var(--sand);line-height:1;margin-bottom:16px}
+.us-icon{font-size:28px;margin-bottom:14px}
+.us-title{font-family:var(--D);font-size:18px;font-weight:700;color:var(--ink);margin-bottom:8px}
+.us-body{font-size:13px;color:var(--olive);line-height:1.6;opacity:.8}
+/* Conectores */
+.uso-step:not(:last-child){position:relative}
+.uso-step:not(:last-child)::after{content:'→';position:absolute;top:48px;right:-8px;font-size:18px;color:var(--sand);font-family:var(--D)}
+
+/* ── COMPRA STICKY (desktop) ── */
+.pdp-main{max-width:1060px;margin:0 auto;padding:clamp(48px,6vw,80px) clamp(20px,5vw,60px);display:grid;grid-template-columns:1fr 340px;gap:48px;align-items:start}
+.pdp-left{}
+.pdp-right{}
+
+/* Galería */
+.gallery{margin-bottom:48px}
+.gallery-main{aspect-ratio:1;border-radius:20px;background:var(--ink2);position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center;margin-bottom:12px}
+.gallery-thumbs{display:flex;gap:8px}
+.thumb{flex:1;aspect-ratio:1;border-radius:10px;background:var(--parch);border:2px solid transparent;cursor:pointer;transition:all .2s;overflow:hidden;display:flex;align-items:center;justify-content:center;font-size:20px}
+.thumb.on{border-color:var(--gold)}
+
+/* Ficha */
+.ficha{background:var(--parch);border-radius:16px;overflow:hidden;border:1px solid rgba(180,154,74,.12)}
+.ficha-row{display:flex;justify-content:space-between;align-items:center;padding:14px 20px;border-bottom:1px solid rgba(180,154,74,.1);font-size:13px}
+.ficha-row:last-child{border-bottom:none}
+.ficha-label{color:var(--olive);opacity:.8}
+.ficha-val{font-weight:500;color:var(--ink)}
+
+/* Buy card */
+.buy-card{background:var(--ink);border-radius:20px;padding:28px;position:sticky;top:80px;overflow:hidden}
+.bc-glow{position:absolute;inset:0;background:radial-gradient(ellipse at 80% 20%,rgba(184,154,74,.1) 0%,transparent 55%);pointer-events:none}
+.bc-tag{font-size:9px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:var(--gold2);margin-bottom:10px}
+.bc-price{font-family:var(--D);font-size:52px;font-weight:700;color:var(--cream);line-height:1;margin-bottom:4px}
+.bc-note{font-size:12px;color:rgba(213,197,168,.4);margin-bottom:24px}
+
+/* Qty */
+.qty-row{display:flex;align-items:center;gap:0;margin-bottom:20px;background:rgba(255,255,255,.05);border-radius:100px;border:1px solid rgba(213,197,168,.1);overflow:hidden;width:fit-content}
+.qty-btn{width:40px;height:40px;background:transparent;border:none;color:var(--cream);font-size:18px;cursor:pointer;transition:background .18s;font-family:var(--B)}
+.qty-btn:hover{background:rgba(255,255,255,.08)}
+.qty-num{font-family:var(--D);font-size:20px;font-weight:700;color:var(--cream);padding:0 16px}
+
+.bc-includes{display:flex;flex-direction:column;gap:7px;margin-bottom:22px;padding:14px;background:rgba(255,255,255,.04);border-radius:10px}
+.bci-row{display:flex;align-items:center;gap:8px;font-size:12px;color:rgba(213,197,168,.7)}
+
+.add-btn{width:100%;padding:16px;background:var(--gold);border:none;border-radius:12px;font-family:var(--B);font-size:14px;font-weight:500;color:var(--ink);cursor:pointer;transition:all .22s;margin-bottom:10px;display:flex;align-items:center;justify-content:center;gap:8px}
+.add-btn:hover{background:var(--gold2);transform:translateY(-1px)}
+.wish-btn{width:100%;padding:12px;background:transparent;border:1px solid rgba(213,197,168,.12);border-radius:12px;font-family:var(--B);font-size:13px;color:rgba(213,197,168,.5);cursor:pointer;transition:all .22s}
+.wish-btn:hover{border-color:var(--gold);color:var(--gold)}
+
+/* Envío */
+.bc-ship{margin-top:18px;display:flex;flex-direction:column;gap:8px}
+.bs-row{display:flex;align-items:center;gap:8px;font-size:12px;color:rgba(213,197,168,.5)}
+
+/* ── REVEAL ── */
+.reveal{opacity:0;transform:translateY(20px);transition:opacity .7s ease,transform .7s ease}
+.reveal.on{opacity:1;transform:translateY(0)}
+.rd1{transition-delay:.05s}.rd2{transition-delay:.12s}.rd3{transition-delay:.19s}.rd4{transition-delay:.26s}
+
+/* ── MOBILE ── */
+@media(max-width:768px){
+  nav{height:54px;padding:0 20px}
+  .nav-tag{display:none}
+
+  /* Hero mobile: stacked */
+  .hero{grid-template-columns:1fr;min-height:auto}
+  .hero-visual{height:320px}
+  .soap-stage{padding:30px}
+  .hero-content{padding:36px 24px 48px}
+  .hero-h1{font-size:clamp(38px,10vw,52px)}
+  .hero-certs{flex-wrap:wrap}
+
+  /* Origin */
+  .ob-inner{grid-template-columns:1fr;gap:32px}
+  .origin-map{grid-template-columns:1fr}
+
+  /* Highlights */
+  .hl-grid{grid-template-columns:1fr 1fr}
+  .hl-card.wide{grid-column:span 2}
+
+  /* Ingredients */
+  .ing-inner{grid-template-columns:1fr;gap:40px}
+  .ing-visual{position:static;order:-1}
+  .ing-circle{max-width:260px;margin:0 auto}
+
+  /* Uso */
+  .uso-steps{grid-template-columns:1fr 1fr}
+  .uso-step::after{display:none}
+
+  /* PDP main */
+  .pdp-main{grid-template-columns:1fr;gap:32px}
+  .buy-card{position:static}
+
+  /* Mobile sticky buy bar */
+  .mobile-buy-bar{display:flex}
+}
+
+@media(min-width:769px){
+  .mobile-buy-bar{display:none!important}
+}
+
+/* Mobile sticky bottom bar */
+.mobile-buy-bar{position:fixed;bottom:0;left:0;right:0;z-index:200;background:var(--ink);border-top:1px solid rgba(184,154,74,.2);padding:14px 20px;align-items:center;justify-content:space-between;gap:12px}
+.mbb-price{font-family:var(--D);font-size:28px;font-weight:700;color:var(--cream)}
+.mbb-btn{flex:1;padding:14px;background:var(--gold);border:none;border-radius:100px;font-family:var(--B);font-size:13px;font-weight:500;color:var(--ink);cursor:pointer}
+
+/* ── UTILS ── */
+.wrap{max-width:1060px;margin:0 auto;padding:0 clamp(20px,5vw,60px)}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div style="display:flex;align-items:center;gap:14px">
+    <div class="nav-logo">BellyDance<span>World</span></div>
+    <div class="nav-tag">BDW Made · Cosmética</div>
+  </div>
+  <div class="nav-right">
+    <button class="btn-secondary" style="padding:8px 18px;font-size:12px">← Volver</button>
+    <button class="nav-cta add-btn" style="width:auto;padding:9px 20px;margin:0;border-radius:100px">Agregar al carrito</button>
+  </div>
+</nav>
+
+<!-- ═══ HERO ═══ -->
+<section class="hero">
+
+  <!-- VISUAL -->
+  <div class="hero-visual">
+    <div class="hero-visual-glow"></div>
+
+    <!-- Partículas aceite laurel -->
+    <div class="drops" id="drops"></div>
+
+    <div class="soap-stage">
+      <svg class="soap-float" width="280" height="340" viewBox="0 0 280 340" fill="none">
+        <defs>
+          <linearGradient id="soapBody" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stop-color="#8B7A50"/>
+            <stop offset="30%" stop-color="#6B5A30"/>
+            <stop offset="65%" stop-color="#4A3A18"/>
+            <stop offset="100%" stop-color="#2E2408"/>
+          </linearGradient>
+          <linearGradient id="soapTop" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stop-color="#9A8A60"/>
+            <stop offset="100%" stop-color="#7A6A40"/>
+          </linearGradient>
+          <linearGradient id="soapSide" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#5A4A28"/>
+            <stop offset="100%" stop-color="#2E2008"/>
+          </linearGradient>
+          <radialGradient id="soapSheen" cx="30%" cy="25%" r="50%">
+            <stop offset="0%" stop-color="rgba(255,240,200,0.15)"/>
+            <stop offset="100%" stop-color="transparent"/>
+          </radialGradient>
+          <filter id="soapShadow">
+            <feDropShadow dx="0" dy="20" stdDeviation="24" flood-color="#0A0804" flood-opacity="0.6"/>
+          </filter>
+        </defs>
+
+        <!-- Sombra proyectada -->
+        <ellipse cx="140" cy="320" rx="80" ry="14" fill="rgba(10,8,4,0.4)"/>
+
+        <g filter="url(#soapShadow)">
+          <!-- Cara frontal del jabón (isométrica) -->
+          <!-- Cara superior -->
+          <path d="M 60 120 L 140 80 L 220 120 L 140 160 Z" fill="url(#soapTop)"/>
+          <!-- Cara derecha -->
+          <path d="M 220 120 L 140 160 L 140 260 L 220 220 Z" fill="url(#soapSide)"/>
+          <!-- Cara frontal -->
+          <path d="M 60 120 L 140 160 L 140 260 L 60 220 Z" fill="url(#soapBody)"/>
+
+          <!-- Sheen / brillo -->
+          <path d="M 60 120 L 140 80 L 220 120 L 140 160 Z" fill="url(#soapSheen)"/>
+          <path d="M 60 120 L 140 160 L 140 260 L 60 220 Z" fill="url(#soapSheen)"/>
+
+          <!-- Textura árabe grabada en cara superior -->
+          <!-- Marco ornamental -->
+          <path d="M 80 122 L 140 95 L 200 122 L 140 149 Z" fill="none" stroke="rgba(255,220,140,0.2)" stroke-width="0.8"/>
+          <!-- Motivo central estrella de 8 puntas -->
+          <polygon points="140,103 143,112 152,112 145,118 148,127 140,122 132,127 135,118 128,112 137,112" fill="rgba(255,220,140,0.25)" stroke="rgba(255,220,140,0.3)" stroke-width="0.5"/>
+          <!-- Texto grabado -->
+          <text x="140" y="138" font-family="Georgia" font-size="6" fill="rgba(255,220,140,0.3)" text-anchor="middle" letter-spacing="2">JABÓN DE ALEPO</text>
+
+          <!-- Textura en cara frontal - líneas de corte -->
+          <line x1="70" y1="165" x2="130" y2="195" stroke="rgba(255,220,140,0.06)" stroke-width="0.5"/>
+          <line x1="70" y1="185" x2="130" y2="215" stroke="rgba(255,220,140,0.06)" stroke-width="0.5"/>
+          <line x1="70" y1="205" x2="130" y2="235" stroke="rgba(255,220,140,0.06)" stroke-width="0.5"/>
+
+          <!-- Variación de color en aristas (aceite de laurel - zona verde) -->
+          <path d="M 60 120 L 70 125 L 70 225 L 60 220 Z" fill="rgba(90,110,70,0.3)"/>
+          <path d="M 60 120 L 140 80 L 145 85 L 65 123 Z" fill="rgba(90,110,70,0.2)"/>
+        </g>
+
+        <!-- Gotas de aceite sobre el jabón -->
+        <circle cx="155" cy="95" r="3" fill="rgba(120,150,90,0.6)">
+          <animate attributeName="opacity" values="0.6;0.1;0.6" dur="3s" repeatCount="indefinite"/>
+        </circle>
+        <circle cx="125" cy="108" r="2" fill="rgba(120,150,90,0.4)">
+          <animate attributeName="opacity" values="0.4;0.1;0.4" dur="4s" begin="1s" repeatCount="indefinite"/>
+        </circle>
+        <circle cx="165" cy="115" r="1.5" fill="rgba(184,154,74,0.5)">
+          <animate attributeName="opacity" values="0.5;0.1;0.5" dur="2.5s" begin="0.5s" repeatCount="indefinite"/>
+        </circle>
+      </svg>
+    </div>
+
+    <!-- Badge flotante origen -->
+    <div style="position:absolute;top:clamp(60px,8vw,90px);right:clamp(16px,4vw,36px);background:rgba(20,16,8,.92);border:1px solid rgba(184,154,74,.3);border-radius:12px;padding:12px 16px;backdrop-filter:blur(8px)">
+      <div style="font-size:8px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:var(--gold2);margin-bottom:3px">Origen certificado</div>
+      <div style="font-family:var(--D);font-size:15px;font-weight:700;color:var(--cream)">🇸🇾 Alepo, Siria</div>
+    </div>
+
+    <!-- Badge antigüedad -->
+    <div style="position:absolute;bottom:clamp(40px,6vw,60px);left:clamp(16px,4vw,36px);background:rgba(20,16,8,.85);border:1px solid rgba(120,140,110,.3);border-radius:12px;padding:10px 14px;backdrop-filter:blur(8px)">
+      <div style="font-size:8px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:var(--sage2);margin-bottom:2px">Receta de</div>
+      <div style="font-family:var(--D);font-size:15px;font-weight:700;color:var(--cream)">+3.000 años</div>
+    </div>
+  </div>
+
+  <!-- CONTENIDO -->
+  <div class="hero-content">
+    <div class="hero-eyebrow">
+      <div class="ey-line"></div>
+      <span class="ey-text">BDW Made · Cosmética árabe</span>
+    </div>
+
+    <h1 class="hero-h1">
+      Jabón de<br>
+      <em>Alepo</em><br>
+      <strong>original</strong>
+    </h1>
+
+    <div class="hero-sub">Saboun Ghar · صابون الغار</div>
+
+    <p class="hero-desc">El jabón más antiguo del mundo, elaborado según la receta original de Alepo con aceite de oliva virgen y aceite de laurel certificado. Sin químicos, sin conservantes, sin intermediarios.</p>
+
+    <div class="hero-price-row">
+      <div class="price-main">$14.900</div>
+      <div class="price-unit">CLP · 200g</div>
+    </div>
+
+    <div class="hero-actions">
+      <button class="btn-primary">Agregar al carrito</button>
+      <button class="btn-secondary">♡ Guardar</button>
+    </div>
+
+    <div class="hero-certs">
+      <div class="cert-pill">🌿 100% natural</div>
+      <div class="cert-pill">🇸🇾 Origen Siria</div>
+      <div class="cert-pill">🧴 Sin SLS</div>
+      <div class="cert-pill">♻️ Biodegradable</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ HIGHLIGHTS ═══ -->
+<section class="highlights">
+  <div class="hl-inner">
+    <span class="section-eyebrow reveal">Por qué este jabón</span>
+    <h2 class="section-h2 reveal">El jabón que usaban<br><em>las reinas</em> <strong>del desierto.</strong></h2>
+
+    <div class="hl-grid">
+
+      <!-- Card grande: edad receta -->
+      <div class="hl-card dark reveal rd1" style="grid-row:span 2">
+        <div class="hl-deco">٣٠٠٠</div>
+        <div style="margin-bottom:auto;padding-bottom:40px">
+          <div class="hl-label" style="color:var(--gold2)">Años de historia</div>
+          <div class="hl-num gold-c">+3.000</div>
+          <div class="hl-body" style="color:rgba(213,197,168,.65)">La receta del jabón de Alepo precede al jabón de Marsella por siglos. Elaborado en la ciudad siria de Alepo desde la antigüedad, es el ancestro de todos los jabones modernos.</div>
+        </div>
+        <div style="padding-top:20px;border-top:1px solid rgba(184,154,74,.15)">
+          <div style="font-size:11px;color:var(--sage2)">Reconocido por la UNESCO como patrimonio cultural inmaterial.</div>
+        </div>
+      </div>
+
+      <!-- Card: aceite laurel -->
+      <div class="hl-card olive reveal rd2">
+        <div class="hl-deco" style="color:var(--sage2)">🌿</div>
+        <div class="hl-label" style="color:var(--sage2)">Aceite de laurel</div>
+        <div class="hl-num" style="color:var(--sage2)">25%</div>
+        <div class="hl-body" style="color:rgba(213,197,168,.6)">El porcentaje de aceite de laurel define la calidad. El nuestro tiene 25% — equivale a grado premium. Cuanto mayor el %, más beneficios para pieles sensibles.</div>
+      </div>
+
+      <!-- Card: sin químicos -->
+      <div class="hl-card light reveal rd3">
+        <div class="hl-deco" style="color:var(--sand)">0</div>
+        <div class="hl-label">Ingredientes artificiales</div>
+        <div class="hl-num ink-c">0</div>
+        <div class="hl-body">Sin sulfatos, sin parabenos, sin fragrancias sintéticas, sin colorantes. Solo dos ingredientes: aceite de oliva y aceite de laurel.</div>
+      </div>
+
+      <!-- Card: maduración -->
+      <div class="hl-card gold reveal rd1">
+        <div class="hl-deco" style="opacity:.08">🕐</div>
+        <div class="hl-label" style="opacity:.7">Maduración</div>
+        <div class="hl-num ink-c">2 años</div>
+        <div class="hl-body" style="opacity:.75">Se produce en invierno y madura al aire en las cuevas de Alepo durante 2 años. Al madurar, el exterior se oscurece y el interior permanece verde.</div>
+      </div>
+
+      <!-- Card wide: para qué sirve -->
+      <div class="hl-card wide sage reveal rd2" style="padding:28px 32px">
+        <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:24px">
+          <div>
+            <div style="font-size:20px;margin-bottom:10px">🧴</div>
+            <div style="font-family:var(--D);font-size:16px;font-weight:700;color:var(--ink);margin-bottom:6px">Piel sensible</div>
+            <div style="font-size:12px;color:var(--olive);opacity:.8;line-height:1.5">Suaviza y calma. Recomendado para eczema, psoriasis y pieles reactivas.</div>
+          </div>
+          <div>
+            <div style="font-size:20px;margin-bottom:10px">💆</div>
+            <div style="font-family:var(--D);font-size:16px;font-weight:700;color:var(--ink);margin-bottom:6px">Cuero cabelludo</div>
+            <div style="font-size:12px;color:var(--olive);opacity:.8;line-height:1.5">Limpia sin resecar. Controla la caspa y regula la producción de sebo.</div>
+          </div>
+          <div>
+            <div style="font-size:20px;margin-bottom:10px">✨</div>
+            <div style="font-family:var(--D);font-size:16px;font-weight:700;color:var(--ink);margin-bottom:6px">Uso diario</div>
+            <div style="font-size:12px;color:var(--olive);opacity:.8;line-height:1.5">pH neutro. Apto para cara, cuerpo y cabello. Para toda la familia.</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══ ORIGEN ═══ -->
+<section class="origin-banner">
+  <div class="ob-inner">
+    <div class="reveal">
+      <span class="ob-tag">Trazabilidad de origen</span>
+      <h2 class="ob-title">Sabemos de<br>dónde viene<br><em>cada barra.</em></h2>
+      <p class="ob-body">Trabajamos directamente con productores en Alepo y Damasco. Cada lote tiene certificado de origen, proveedor identificado y fecha de producción.</p>
+    </div>
+    <div class="origin-map reveal rd2">
+      <div class="om-card">
+        <div class="om-flag">🇸🇾</div>
+        <div class="om-country">Siria</div>
+        <div class="om-city">Alepo · حلب</div>
+        <div class="om-desc">La ciudad de Alepo es la cuna del jabón. Los maestros jaboneros (sabouniers) heredan la técnica de generación en generación.</div>
+        <div class="om-cert">✓ Certificado de origen</div>
+      </div>
+      <div class="om-card">
+        <div class="om-flag">🌿</div>
+        <div class="om-country">Aceite de laurel</div>
+        <div class="om-city">Bosques de laurel · Siria</div>
+        <div class="om-desc">El aceite de baya de laurel se extrae en frío una vez al año, en noviembre. El color verde del interior del jabón viene de este aceite.</div>
+        <div class="om-cert">✓ Extracción en frío</div>
+      </div>
+      <div class="om-card">
+        <div class="om-flag">🫒</div>
+        <div class="om-country">Aceite de oliva</div>
+        <div class="om-city">Cosecha · Levante</div>
+        <div class="om-desc">Aceite de oliva virgen extra de la región del Levante mediterráneo. Prensado en frío, sin refinación, con todos sus polifenoles activos.</div>
+        <div class="om-cert">✓ Virgen extra</div>
+      </div>
+      <div class="om-card">
+        <div class="om-flag">🕯️</div>
+        <div class="om-country">Maduración</div>
+        <div class="om-city">2 años en cueva · Alepo</div>
+        <div class="om-desc">Tras la cocción invernal, las barras maduran apiladas en cuevas de piedra. El exterior se oscurece; el interior conserva el verde del laurel.</div>
+        <div class="om-cert">✓ Año de cosecha 2022</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ INGREDIENTES ═══ -->
+<section class="ingredients">
+  <div class="ing-inner">
+    <div>
+      <span class="section-eyebrow reveal">Solo 2 ingredientes</span>
+      <h2 class="section-h2 reveal" style="margin-bottom:32px">Nada que <em>esconder.</em></h2>
+      <div class="ing-list">
+        <div class="ing-item reveal rd1" onclick="selectIng(this,75,'Aceite de oliva','Olea Europaea')">
+          <div class="ing-pct">75%</div>
+          <div class="ing-info">
+            <div class="ing-name">Aceite de oliva virgen extra</div>
+            <div class="ing-name-ar">زيت الزيتون البكر الممتاز · Olea Europaea Fruit Oil</div>
+            <div class="ing-desc">Base del jabón. Aporta hidratación profunda, protege la barrera cutánea y proporciona la textura densa y cremosa característica.</div>
+          </div>
+        </div>
+        <div class="ing-item reveal rd2" onclick="selectIng(this,25,'Aceite de laurel','Laurus Nobilis')">
+          <div class="ing-pct">25%</div>
+          <div class="ing-info">
+            <div class="ing-name">Aceite de baya de laurel</div>
+            <div class="ing-name-ar">زيت الغار · Laurus Nobilis Fruit Oil</div>
+            <div class="ing-desc">El ingrediente diferencial. Antibacteriano natural, antiinflamatorio, ideal para pieles problemáticas. Da el color verde interior al jabón.</div>
+          </div>
+        </div>
+        <div class="ing-item reveal rd3" style="opacity:.5;pointer-events:none">
+          <div class="ing-pct" style="font-size:14px;padding-top:4px;color:var(--sage)">+</div>
+          <div class="ing-info">
+            <div class="ing-name" style="font-size:14px">Sosa cáustica + agua</div>
+            <div class="ing-name-ar">Se saponifica durante la elaboración · No queda en el producto final</div>
+            <div class="ing-desc">La sosa es el agente saponificante. En el proceso de elaboración reacciona completamente con los aceites y desaparece — no queda sosa en el jabón terminado.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Visual circular -->
+    <div class="ing-visual reveal rd2">
+      <div class="ing-circle" id="ing-circle">
+        <!-- SVG ring de progreso -->
+        <svg class="ring-svg" viewBox="0 0 300 300">
+          <circle cx="150" cy="150" r="130" fill="none" stroke="rgba(184,154,74,.08)" stroke-width="3"/>
+          <circle cx="150" cy="150" r="130" fill="none" stroke="var(--gold)" stroke-width="2" stroke-dasharray="816 816" stroke-dashoffset="204" stroke-linecap="round" transform="rotate(-90 150 150)" id="ring-fill" style="transition:stroke-dashoffset .6s ease"/>
+          <circle cx="150" cy="150" r="100" fill="none" stroke="rgba(120,140,110,.1)" stroke-width="1"/>
+        </svg>
+        <div class="ing-circle-inner">
+          <div class="ic-pct" id="ic-pct">75%</div>
+          <div class="ic-label" id="ic-label">del total</div>
+          <div class="ic-name" id="ic-name">Aceite de oliva</div>
+        </div>
+      </div>
+
+      <!-- Mini specs -->
+      <div style="margin-top:20px;display:grid;grid-template-columns:1fr 1fr;gap:10px">
+        <div style="background:var(--ink2);border-radius:12px;padding:16px;text-align:center">
+          <div style="font-family:var(--D);font-size:22px;font-weight:700;color:var(--gold2)">200g</div>
+          <div style="font-size:10px;color:rgba(213,197,168,.5);letter-spacing:.1em;text-transform:uppercase;margin-top:4px">Peso neto</div>
+        </div>
+        <div style="background:var(--ink2);border-radius:12px;padding:16px;text-align:center">
+          <div style="font-family:var(--D);font-size:22px;font-weight:700;color:var(--sage2)">pH 9</div>
+          <div style="font-size:10px;color:rgba(213,197,168,.5);letter-spacing:.1em;text-transform:uppercase;margin-top:4px">Valor pH</div>
+        </div>
+        <div style="background:var(--ink2);border-radius:12px;padding:16px;text-align:center;grid-column:span 2">
+          <div style="font-size:10px;color:var(--sage2);letter-spacing:.1em;text-transform:uppercase;margin-bottom:6px">Vence</div>
+          <div style="font-family:var(--D);font-size:18px;font-weight:700;color:var(--cream)">5 años desde apertura</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ MODO DE USO ═══ -->
+<section class="uso">
+  <div class="uso-inner">
+    <span class="section-eyebrow reveal">Cómo usarlo</span>
+    <h2 class="section-h2 reveal">Ritual de <em>3 minutos.</em></h2>
+    <div class="uso-steps">
+      <div class="uso-step reveal rd1">
+        <div class="us-num">01</div>
+        <div class="us-icon">💧</div>
+        <div class="us-title">Humectar</div>
+        <div class="us-body">Mojá el jabón y tus manos con agua tibia. El agua caliente activa mejor los aceites activos.</div>
+      </div>
+      <div class="uso-step reveal rd2">
+        <div class="us-num">02</div>
+        <div class="us-icon">🫧</div>
+        <div class="us-title">Espumar</div>
+        <div class="us-body">Frotar el jabón entre las manos hasta obtener espuma densa. La espuma del jabón de Alepo es cremosa, no como los jabones modernos.</div>
+      </div>
+      <div class="uso-step reveal rd3">
+        <div class="us-num">03</div>
+        <div class="us-icon">✨</div>
+        <div class="us-title">Aplicar</div>
+        <div class="us-body">Aplicar la espuma en cara, cuerpo o cabello. Dejar actuar 1-2 minutos para potenciar los beneficios del laurel.</div>
+      </div>
+      <div class="uso-step reveal rd4">
+        <div class="us-num">04</div>
+        <div class="us-icon">💆</div>
+        <div class="us-title">Enjuagar</div>
+        <div class="us-body">Enjuagar con agua tibia. Guardar el jabón en un lugar seco entre usos — dura muchos más lavados que el jabón industrial.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ PDP MAIN (galería + ficha + compra) ═══ -->
+<section style="background:var(--parch);padding:clamp(60px,8vw,100px) 0">
+  <div class="pdp-main">
+
+    <!-- IZQUIERDA -->
+    <div>
+      <!-- Galería -->
+      <div class="gallery reveal">
+        <div class="gallery-main">
+          <div style="position:absolute;inset:0;background:linear-gradient(160deg,#2E2408,#1A1208);display:flex;align-items:center;justify-content:center">
+            <svg width="140" height="170" viewBox="0 0 140 170" fill="none">
+              <path d="M30 60 L70 40 L110 60 L70 80 Z" fill="url(#soapTop)"/>
+              <path d="M110 60 L70 80 L70 140 L110 120 Z" fill="#3A2A10"/>
+              <path d="M30 60 L70 80 L70 140 L30 120 Z" fill="#5A4A28"/>
+            </svg>
+          </div>
+          <div style="position:absolute;top:16px;left:16px">
+            <span style="display:inline-flex;align-items:center;gap:5px;padding:5px 12px;border-radius:100px;background:rgba(184,154,74,.15);border:1px solid rgba(184,154,74,.3);font-size:10px;font-weight:500;color:var(--gold2)">✦ BDW Made</span>
+          </div>
+        </div>
+        <div class="gallery-thumbs">
+          <div class="thumb on">🧼</div>
+          <div class="thumb">🌿</div>
+          <div class="thumb">🫒</div>
+          <div class="thumb">📦</div>
+        </div>
+      </div>
+
+      <!-- Ficha técnica -->
+      <div class="reveal">
+        <div class="section-eyebrow" style="margin-bottom:14px">Ficha técnica</div>
+        <div class="ficha">
+          <div class="ficha-row"><span class="ficha-label">Nombre botánico</span><span class="ficha-val">Saboune d'Alep · صابون حلب</span></div>
+          <div class="ficha-row"><span class="ficha-label">Origen</span><span class="ficha-val">🇸🇾 Alepo, Siria</span></div>
+          <div class="ficha-row"><span class="ficha-label">Proceso</span><span class="ficha-val">Cocción invernal · método antiguo</span></div>
+          <div class="ficha-row"><span class="ficha-label">Maduración</span><span class="ficha-val">2 años en cueva de piedra</span></div>
+          <div class="ficha-row"><span class="ficha-label">% aceite de laurel</span><span class="ficha-val" style="color:var(--sage)">25% — grado premium</span></div>
+          <div class="ficha-row"><span class="ficha-label">Peso</span><span class="ficha-val">200 g (±5%)</span></div>
+          <div class="ficha-row"><span class="ficha-label">pH</span><span class="ficha-val">8.5 – 9.5</span></div>
+          <div class="ficha-row"><span class="ficha-label">Conservación</span><span class="ficha-val">Lugar seco, sin contacto directo con agua</span></div>
+          <div class="ficha-row"><span class="ficha-label">Vencimiento</span><span class="ficha-val">5 años desde apertura</span></div>
+          <div class="ficha-row"><span class="ficha-label">Ingredientes INCI</span><span class="ficha-val" style="font-size:11px">Olea Europaea Fruit Oil, Laurus Nobilis Fruit Oil, Aqua, Sodium Hydroxide*</span></div>
+          <div class="ficha-row" style="background:rgba(120,140,110,.05)"><span class="ficha-label">Certificaciones</span><span style="display:flex;gap:6px;flex-wrap:wrap"><span style="padding:2px 8px;border-radius:100px;background:rgba(120,140,110,.15);font-size:10px;color:var(--sage)">Natural</span><span style="padding:2px 8px;border-radius:100px;background:rgba(184,154,74,.12);font-size:10px;color:var(--gold)">Origen certificado</span><span style="padding:2px 8px;border-radius:100px;background:rgba(120,140,110,.15);font-size:10px;color:var(--sage)">Sin SLS</span></span></div>
+        </div>
+        <div style="font-size:10px;color:var(--olive);opacity:.6;margin-top:8px;line-height:1.5">*La sosa cáustica (NaOH) se usa en el proceso de saponificación. Reacciona completamente con los aceites y no queda presente en el producto terminado.</div>
+      </div>
+    </div>
+
+    <!-- DERECHA: Buy card -->
+    <div class="pdp-right">
+      <div class="buy-card reveal">
+        <div class="bc-glow"></div>
+        <div style="position:relative;z-index:1">
+          <div class="bc-tag">Jabón de Alepo · BDW Made</div>
+          <div class="bc-price">$14.900</div>
+          <div class="bc-note">CLP · barra de 200g · envío a todo Chile</div>
+
+          <!-- Qty -->
+          <div style="margin-bottom:6px;font-size:11px;color:rgba(213,197,168,.4);letter-spacing:.08em;text-transform:uppercase">Cantidad</div>
+          <div class="qty-row" style="margin-bottom:20px">
+            <button class="qty-btn" onclick="changeQty(-1)">−</button>
+            <div class="qty-num" id="qty">1</div>
+            <button class="qty-btn" onclick="changeQty(1)">+</button>
+          </div>
+
+          <!-- Total -->
+          <div style="display:flex;justify-content:space-between;align-items:baseline;padding:14px 0;border-top:1px solid rgba(213,197,168,.08);border-bottom:1px solid rgba(213,197,168,.08);margin-bottom:20px">
+            <span style="font-size:13px;color:rgba(213,197,168,.5)">Total</span>
+            <span style="font-family:var(--D);font-size:32px;font-weight:700;color:var(--cream)" id="total-price">$14.900</span>
+          </div>
+
+          <div class="bc-includes">
+            <div class="bci-row">🧼 Jabón 200g con certificado de origen</div>
+            <div class="bci-row">📄 Ficha técnica impresa</div>
+            <div class="bci-row">🌿 Guía de uso y beneficios</div>
+            <div class="bci-row">📦 Empaque protegido · papel kraft</div>
+          </div>
+
+          <button class="add-btn">🛒 Agregar al carrito</button>
+          <button class="wish-btn">♡ Guardar en favoritos</button>
+
+          <div class="bc-ship">
+            <div class="bs-row">🚚 Despacho en 3–5 días hábiles</div>
+            <div class="bs-row">📦 Envío gratis sobre $25.000</div>
+            <div class="bs-row">↩️ Devolución en 10 días</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- MOBILE STICKY BAR -->
+<div class="mobile-buy-bar">
+  <div class="mbb-price">$14.900</div>
+  <button class="mbb-btn">Agregar al carrito</button>
+</div>
+
+<script>
+// Partículas aceite laurel
+const drops = document.getElementById('drops');
+for(let i=0;i<18;i++){
+  const d = document.createElement('div');
+  d.className = 'drop';
+  d.style.cssText = `left:${Math.random()*100}%;top:${Math.random()*100}%;animation-delay:${Math.random()*8}s;animation-duration:${4+Math.random()*6}s;width:${3+Math.random()*5}px;height:${3+Math.random()*5}px;background:${Math.random()>.5?'rgba(120,150,90,0.5)':'rgba(184,154,74,0.4)'}`;
+  drops.appendChild(d);
+}
+
+// Gallery thumbs
+document.querySelectorAll('.thumb').forEach(t=>{
+  t.addEventListener('click',()=>{
+    document.querySelectorAll('.thumb').forEach(th=>th.classList.remove('on'));
+    t.classList.add('on');
+  });
+});
+
+// Ingredientes interactivo
+function selectIng(el, pct, name, latin){
+  document.querySelectorAll('.ing-item').forEach(i=>i.style.opacity='0.5');
+  el.style.opacity='1';
+  document.getElementById('ic-pct').textContent = pct+'%';
+  document.getElementById('ic-name').textContent = name;
+  const circumference = 2 * Math.PI * 130;
+  const offset = circumference - (pct/100)*circumference;
+  document.getElementById('ring-fill').style.strokeDashoffset = offset;
+  document.getElementById('ring-fill').style.stroke = pct===75 ? 'var(--gold)' : 'var(--sage)';
+}
+
+// Qty
+let qty = 1;
+const basePrice = 14900;
+function changeQty(d){
+  qty = Math.max(1, qty+d);
+  document.getElementById('qty').textContent = qty;
+  document.getElementById('total-price').textContent = '$'+(basePrice*qty).toLocaleString('es-CL');
+}
+
+// Scroll reveal
+const obs = new IntersectionObserver(entries=>{
+  entries.forEach(e=>{ if(e.isIntersecting) e.target.classList.add('on'); });
+},{threshold:0.1});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>
