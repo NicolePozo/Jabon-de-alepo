@@ -299,37 +299,6 @@ nav{position:sticky;top:0;z-index:100;background:rgba(249,245,238,.96);backdrop-
         <!-- Sombra proyectada -->
         <ellipse cx="140" cy="320" rx="80" ry="14" fill="rgba(10,8,4,0.4)"/>
 
-        <g filter="url(#soapShadow)">
-          <!-- Cara frontal del jabón (isométrica) -->
-          <!-- Cara superior -->
-          <path d="M 60 120 L 140 80 L 220 120 L 140 160 Z" fill="url(#soapTop)"/>
-          <!-- Cara derecha -->
-          <path d="M 220 120 L 140 160 L 140 260 L 220 220 Z" fill="url(#soapSide)"/>
-          <!-- Cara frontal -->
-          <path d="M 60 120 L 140 160 L 140 260 L 60 220 Z" fill="url(#soapBody)"/>
-
-          <!-- Sheen / brillo -->
-          <path d="M 60 120 L 140 80 L 220 120 L 140 160 Z" fill="url(#soapSheen)"/>
-          <path d="M 60 120 L 140 160 L 140 260 L 60 220 Z" fill="url(#soapSheen)"/>
-
-          <!-- Textura árabe grabada en cara superior -->
-          <!-- Marco ornamental -->
-          <path d="M 80 122 L 140 95 L 200 122 L 140 149 Z" fill="none" stroke="rgba(255,220,140,0.2)" stroke-width="0.8"/>
-          <!-- Motivo central estrella de 8 puntas -->
-          <polygon points="140,103 143,112 152,112 145,118 148,127 140,122 132,127 135,118 128,112 137,112" fill="rgba(255,220,140,0.25)" stroke="rgba(255,220,140,0.3)" stroke-width="0.5"/>
-          <!-- Texto grabado -->
-          <text x="140" y="138" font-family="Georgia" font-size="6" fill="rgba(255,220,140,0.3)" text-anchor="middle" letter-spacing="2">JABÓN DE ALEPO</text>
-
-          <!-- Textura en cara frontal - líneas de corte -->
-          <line x1="70" y1="165" x2="130" y2="195" stroke="rgba(255,220,140,0.06)" stroke-width="0.5"/>
-          <line x1="70" y1="185" x2="130" y2="215" stroke="rgba(255,220,140,0.06)" stroke-width="0.5"/>
-          <line x1="70" y1="205" x2="130" y2="235" stroke="rgba(255,220,140,0.06)" stroke-width="0.5"/>
-
-          <!-- Variación de color en aristas (aceite de laurel - zona verde) -->
-          <path d="M 60 120 L 70 125 L 70 225 L 60 220 Z" fill="rgba(90,110,70,0.3)"/>
-          <path d="M 60 120 L 140 80 L 145 85 L 65 123 Z" fill="rgba(90,110,70,0.2)"/>
-        </g>
-
         <!-- Gotas de aceite sobre el jabón -->
         <circle cx="155" cy="95" r="3" fill="rgba(120,150,90,0.6)">
           <animate attributeName="opacity" values="0.6;0.1;0.6" dur="3s" repeatCount="indefinite"/>
